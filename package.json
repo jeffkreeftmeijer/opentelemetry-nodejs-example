@@ -4,5 +4,8 @@
     "@opentelemetry/auto-instrumentations-node": "^0.25.0",
     "@opentelemetry/sdk-node": "^0.24.0",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4"
   }
 }
