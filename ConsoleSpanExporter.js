@@ -46,7 +46,7 @@ var ConsoleSpanExporter = /** @class */ (function () {
      */
     ConsoleSpanExporter.prototype._exportInfo = function (span) {
         return {
-            traceId: "span.spanContext().traceId",
+            traceId: span.spanContext().traceId,
             parentId: span.parentSpanId,
             name: span.name,
             id: span.spanContext().spanId,
