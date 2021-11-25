@@ -1,10 +1,14 @@
 const { Appsignal } = require("@appsignal/nodejs");
+const { context } = require("@opentelemetry/api");
 
 const appsignal = new Appsignal({
   active: true,
   name: "OpenTelemetryExample",
-  apiKey: "e526dcd6-3d2e-41c7-91c4-4f6c3cedf7de",
+  apiKey: "2d43c838-0e94-4b9c-811d-2055b595b6cc",
+  endpoint: "https://push.staging.lol"
 });
+
+global.appsignal = appsignal;
 
 const express = require("express");
 const { expressMiddleware } = require("@appsignal/express");
