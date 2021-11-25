@@ -17,6 +17,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConsoleSpanExporter = void 0;
 var core_1 = require("@opentelemetry/core");
+const { context } = require("@opentelemetry/api");
 /**
  * This is implementation of {@link SpanExporter} that prints spans to the
  * console. This class can be used for diagnostic purposes.
@@ -66,7 +67,7 @@ var ConsoleSpanExporter = /** @class */ (function () {
     ConsoleSpanExporter.prototype._sendSpans = function (spans, done) {
         for (var _i = 0, spans_1 = spans; _i < spans_1.length; _i++) {
             var span = spans_1[_i];
-            console.log(this._exportInfo(span));
+            console.log(context.active().getValue("traceparent"))
         }
         if (done) {
             return done({ code: core_1.ExportResultCode.SUCCESS });

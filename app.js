@@ -19,8 +19,13 @@ const app = express();
 app.use(expressMiddleware(appsignal));
 
 app.get("/", (req, res) => {
-  console.log(appsignal.tracer().currentSpan())
-  res.send("Hello World");
+  active = context.active()
+  span = appsignal.tracer().currentSpan()
+
+  context.with(active.setValue("traceparent", "00-" + span.traceId + "-" + span.spanId + "-00"), function() {
+    // console.log(context.active().getValue("traceparent"))
+    res.send("Hello World");
+  })
 });
 
 app.listen(parseInt(PORT, 10), () => {
